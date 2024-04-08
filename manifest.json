@@ -4,6 +4,7 @@
     "version": "1.0",
     "description": "A11Y Chatbot teaches you how to build Websites and Apps accessible to all.",
     "action": {
+      "default_popup":"script.js",
       "default_icon": "chatbot.png" 
     },
     "icons": {
