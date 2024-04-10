@@ -1,27 +1,42 @@
-  #a11y-extension{
-    position: fixed;
-    top: 50px; /* Adjust as needed */
-    left: 50px; /* Adjust as needed */
-    cursor: move;
-    z-index: 9999; /* Ensure it's on top of other elements */
+#common{
+  position: fixed;
+    top: 50px;
+    left: 50px; 
+    z-index: 9999; 
+    display: flex;
+    flex-direction: row;
+}
+#toggleButton{
+  width: 65px;
+}
+.icon-btn{
+  width: 65px;
+  cursor: pointer;
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: .5s;
+}
+.icon-btn:hover{
+  cursor: pointer;
 }
   .container {
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
     line-height: normal;
     font-weight: normal;
-    text-align: justify;
-    width: 320px;
+    width: 25vw;
     color: #121217;
     background-color: #F0F0F5;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 1%;
+    padding-bottom: 4%;
     height: 85vh;
     border-radius: 20px;
     border: 1.5px solid #1A1AE5;
+    margin-left: 5px;
   }
   .welcome-box{
     width: 100%;
@@ -38,11 +53,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   }
-  h2{
-   font-size: 20px;
-   font-weight:500;
-   text-align: center;
-  }
   .desc{
     text-align: center;
     width: 98%;
@@ -54,8 +64,8 @@
     width: 90%;
     margin: auto;
   }
-  
-  form{
+
+  #chatbot-form{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -79,7 +89,7 @@
     cursor: text;
   }
   
-  button{
+  #chatbot-form-btn{
     padding:1rem;
     border: none;
     border-radius: 50%;    
@@ -95,17 +105,6 @@
   }
   .send:hover{
     transform: scale(1.2,1.2);
-  }
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #F0F0F5;
-    border-radius: 8px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #636387;
-    cursor: pointer;
   }
   .media-list{
     width: 95%;
@@ -136,7 +135,7 @@
     color: #F0F0F5;
     padding: .8rem;
     border-radius: 12px  0px 12px 12px;
-    text-align: justify;
+    text-align: left;
     font-size: 14px;
   }
   .answer{
@@ -156,9 +155,10 @@
     color: #636387;
     padding: .8rem;
     border-radius: 0px  12px 12px 12px;
-    text-align: justify;
+    text-align: left;
     font-size: 14px;
   }
   .botoutput_typing{
     opacity: .5;
   }
+  

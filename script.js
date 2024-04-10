@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
       rel="stylesheet"
     />
     </head>
-    <div class="container" id="a11y-extension">
+    <div id="common">
+    <div id="toggleButton">
+    <img class="icon-btn" alt="Logo"  src="chrome-extension://afgmghpdkdfhegeojiboikocdmhcojon/A11YLogo.png">
+    </div>
+    <div class="container" id="a11y-extension" style="display: none;">
         <div class="welcome-box">
             <img class="logo" alt="Logo" id="reload" src="chrome-extension://afgmghpdkdfhegeojiboikocdmhcojon/logo.png">
         </div>
@@ -22,32 +26,37 @@ document.addEventListener("DOMContentLoaded", function() {
             </form>
         </div>
     </div>
+    </div>
     `;
     document.body.insertAdjacentHTML('afterbegin', MainHTML);
 
-    // Make the container draggable
-    const container = document.getElementById('a11y-extension');
+    // Make the container and toggleButton draggable
+    const container = document.getElementById('common');
+    const logo = document.getElementById('a11y-extension');
+    const toggleButton = document.getElementById('toggleButton');
 
-    let isDragging = false;
-    let offsetX, offsetY;
+    let containerDragging = false;
+    let containerOffsetX, containerOffsetY;
 
-    container.addEventListener('mousedown', startDrag);
-    container.addEventListener('mouseup', endDrag);
+    container.addEventListener('mousedown', startContainerDrag);
+    document.addEventListener('mouseup', endDrag);
 
-    function startDrag(e) {
-        isDragging = true;
-        offsetX = e.clientX - container.getBoundingClientRect().left;
-        offsetY = e.clientY - container.getBoundingClientRect().top;
+    function startContainerDrag(e) {
+        containerDragging = true;
+        containerOffsetX = e.clientX - container.getBoundingClientRect().left;
+        containerOffsetY = e.clientY - container.getBoundingClientRect().top;
     }
 
+
     function endDrag() {
-        isDragging = false;
+        containerDragging = false;
+        
     }
 
     document.addEventListener('mousemove', e => {
-        if (isDragging) {
-            container.style.left = `${e.clientX - offsetX}px`;
-            container.style.top = `${e.clientY - offsetY}px`;
+        if (containerDragging) {
+            container.style.left = `${e.clientX - containerOffsetX}px`;
+            container.style.top = `${e.clientY - containerOffsetY}px`;
         }
     });
 
@@ -131,4 +140,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     document.getElementById('chatbot-form').addEventListener('submit', handleSubmit);
+
+    // Toggle visibility of container on click
+    toggleButton.addEventListener('click', function() {
+        if (logo.style.display === 'none') {
+            logo.style.display = 'flex';
+        } else {
+            logo.style.display = 'none';
+        }
+    });
 });
