@@ -1,74 +1,87 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Inject HTML
-    const MainHTML = `
-    <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    </head>
-    <div id="common">
-    <div id="toggleButton">
-    <img class="icon-btn" alt="Logo"  src="chrome-extension://afgmghpdkdfhegeojiboikocdmhcojon/A11YLogo.png">
+// Inject HTML
+const MainHTML = `
+<head>
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+</head>
+<body>
+<div id="common">
+<div id="toggleButton">
+<img class="icon-btn" alt="Logo"  src="${chrome.runtime.getURL("defaultLogo.png")}">
+</div>
+<div class="container" id="a11y-extension" style="display: none;">
+    <div class="welcome-box">
+        <img class="logo" alt="Logo" id="reload" src="${chrome.runtime.getURL("logo.png")}">
     </div>
-    <div class="container" id="a11y-extension" style="display: none;">
-        <div class="welcome-box">
-            <img class="logo" alt="Logo" id="reload" src="chrome-extension://afgmghpdkdfhegeojiboikocdmhcojon/logo.png">
-        </div>
-        <div class="desc">Our chatbot teaches you how to build Websites and Apps accessible to all. Let's make the digital world welcoming for all. Start your easy-to-follow journey with us today!</div>
-        <div class="media-list"></div>
-        <div class="chatbox">
-            <form id="chatbot-form">
-                <input class="input-box" placeholder="Message A11Y..." id="messageText" />
-                <button type="submit" title="Send Message" id="chatbot-form-btn">
-                    <img class="send" src="chrome-extension://afgmghpdkdfhegeojiboikocdmhcojon/send.svg" alt="Send">
-                </button>
-            </form>
-        </div>
+    <div class="desc">Our chatbot teaches you how to build Websites and Apps accessible to all. Let's make the digital world welcoming for all. Start your easy-to-follow journey with us today!</div>
+    <div class="media-list"></div>
+    <div class="chatbox">
+        <form id="chatbot-form">
+            <input class="input-box" placeholder="Message A11Y..." id="messageText" />
+            <button type="submit" title="Send Message" id="chatbot-form-btn">
+                <img class="send" src="${chrome.runtime.getURL("send.svg")}">
+            </button>
+        </form>
     </div>
-    </div>
-    `;
-    document.body.insertAdjacentHTML('afterbegin', MainHTML);
+</div>
+</div>
+</body>
+`;
+document.body.insertAdjacentHTML('afterbegin', MainHTML);
+    
+     // Make the container draggable
+     const container = document.getElementById('common');
+   
+     let containerDragging = false;
+     let containerOffsetX, containerOffsetY;
+ 
+     container.addEventListener('mousedown', startContainerDrag);
+     document.addEventListener('mouseup', endDrag);
+ 
+     function startContainerDrag(e) {
+         containerDragging = true;
+         containerOffsetX = e.clientX - container.getBoundingClientRect().left;
+         containerOffsetY = e.clientY - container.getBoundingClientRect().top;
+     }
 
-    // Make the container and toggleButton draggable
-    const container = document.getElementById('common');
-    const logo = document.getElementById('a11y-extension');
-    const toggleButton = document.getElementById('toggleButton');
+     function adjustContainerPosition() {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const containerRect = container.getBoundingClientRect();
 
-    let containerDragging = false;
-    let containerOffsetX, containerOffsetY;
-
-    container.addEventListener('mousedown', startContainerDrag);
-    document.addEventListener('mouseup', endDrag);
-
-    function startContainerDrag(e) {
-        containerDragging = true;
-        containerOffsetX = e.clientX - container.getBoundingClientRect().left;
-        containerOffsetY = e.clientY - container.getBoundingClientRect().top;
-    }
-
-
-    function endDrag() {
-        containerDragging = false;
-        
-    }
-
-    document.addEventListener('mousemove', e => {
-        if (containerDragging) {
-            container.style.left = `${e.clientX - containerOffsetX}px`;
-            container.style.top = `${e.clientY - containerOffsetY}px`;
+        if (containerRect.left < 0) {
+            container.style.left = '0';
+        } else if (containerRect.right > windowWidth) {
+            container.style.left = `${windowWidth - containerRect.width}px`;
         }
-    });
 
-    function handleReload() {
-        window.location.reload();
+        if (containerRect.top < 0) {
+            container.style.top = '0';
+        } else if (containerRect.bottom > windowHeight) {
+            container.style.top = `${windowHeight - containerRect.height}px`;
+        }
     }
 
-    let message = "";
+     document.addEventListener('mousemove', e => {
+         if (containerDragging) {
+             container.style.left = `${e.clientX - containerOffsetX}px`;
+             container.style.top = `${e.clientY - containerOffsetY}px`;   
+             container.style.userSelect = 'none'; // Prevent text selection during dragging
+         }
+     });
 
-    const setMessage = (value) => {
-        message = value;
-    };
+     function endDrag() {
+        containerDragging = false;
+        adjustContainerPosition(); // Call adjustContainerPosition() while dragging
+        container.style.userSelect = ''; // Allow text selection after dragging
+    }
+
+
+     let message = "";
+
+     const setMessage = (value) => message = value;
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -142,6 +155,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('chatbot-form').addEventListener('submit', handleSubmit);
 
     // Toggle visibility of container on click
+    const logo = document.getElementById('a11y-extension');
+    const toggleButton = document.getElementById('toggleButton');
     toggleButton.addEventListener('click', function() {
         if (logo.style.display === 'none') {
             logo.style.display = 'flex';
@@ -149,4 +164,3 @@ document.addEventListener("DOMContentLoaded", function() {
             logo.style.display = 'none';
         }
     });
-});

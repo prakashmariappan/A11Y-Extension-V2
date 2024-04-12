@@ -1,16 +1,17 @@
-  {
-    "manifest_version": 3,
-    "name": "A11Y Chatbot",
-    "version": "1.0.0",
-    "description": "A11Y Chatbot teaches you how to build Websites and Apps accessible to all.",
-    "action": {
-      "default_popup":"script.js",
-      "default_icon": "defaultLogo.png" 
-    },
-    "icons": {
-      "128": "defaultLogo.png"
+{
+  "name": "A11Y Chatbot",
+  "version": "1.0.0",
+  "description": "A11Y Chatbot teaches you how to build Websites and Apps accessible to all.",
+  "manifest_version": 3,
+  "author": "A11Y Chatbot Team",
+  "action": {
+    "default_popup":"script.js",
+    "default_icon": "defaultLogo.png" 
   },
-    "permissions": [
+  "icons": {
+    "128": "defaultLogo.png"
+},
+  "permissions": [
       "activeTab",
       "scripting",
       "webNavigation",
@@ -23,11 +24,12 @@
       {
         "matches": ["<all_urls>"],
         "js": ["script.js"],
-        "css": ["style.css"]
+        "css": ["styles.css"]
       }
     ],
     "web_accessible_resources": [ {
       "matches": [ "<all_urls>" ],
-      "resources": ["style.css", "logo.png", "send.svg","A11YLogo.png"]
+      "resources": [ "styles.css","defaultLogo.png","logo.png","send.svg"]
    } ]
-}  
+    
+}

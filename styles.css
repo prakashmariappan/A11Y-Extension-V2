@@ -5,6 +5,7 @@
     z-index: 9999; 
     display: flex;
     flex-direction: row;
+    max-width: 35vw;
 }
 #toggleButton{
   width: 65px;
@@ -42,7 +43,7 @@
     width: 100%;
     background-color: #1A1AE5;
     display: flex;
-    border-radius: 18.5px 18.5px 0px 0px;
+    border-radius: 17px 17px 0px 0px;
     padding: 5% 0px;
   }
   .logo{
