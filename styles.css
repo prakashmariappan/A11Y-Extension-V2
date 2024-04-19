@@ -1,165 +1,188 @@
-#common{
+#common {
   position: fixed;
-    top: 50px;
-    left: 50px; 
-    z-index: 9999; 
-    display: flex;
-    flex-direction: row;
-    max-width: 35vw;
+  top: 50px;
+  left: 50px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: row;
+  max-width: 35vw;
 }
-#toggleButton{
+#toggleButton {
   width: 65px;
 }
-.icon-btn{
+.icon-btn {
   width: 65px;
   cursor: pointer;
-  background-position:center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
-.icon-btn:hover{
+.icon-btn:hover {
   cursor: pointer;
 }
-  .container {
-    scroll-behavior: smooth;
-    font-family: "Poppins", sans-serif;
-    line-height: normal;
-    font-weight: normal;
-    width: 25vw;
-    color: #121217;
-    background-color: #F0F0F5;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 4%;
-    height: 85vh;
-    border-radius: 20px;
-    border: 1.5px solid #1A1AE5;
-    margin-left: 5px;
-  }
-  .welcome-box{
-    width: 100%;
-    background-color: #1A1AE5;
-    display: flex;
-    border-radius: 17px 17px 0px 0px;
-    padding: 5% 0px;
-  }
-  .logo{
+.container {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  line-height: normal;
+  font-weight: normal;
+  width: 25vw;
+  color: #121217;
+  background-color: #f0f0f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 4%;
+  height: 85vh;
+  border-radius: 20px;
+  border: 1.5px solid #1a1ae5;
+  margin-left: 5px;
+}
+.welcome-box {
+  width: 100%;
+  background-color: #1a1ae5;
+  display: flex;
+  border-radius: 17px 17px 0px 0px;
+  padding: 5% 0px;
+}
+.logo {
   width: 200px;
   cursor: pointer;
   margin: auto;
-  background-position:center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  }
-  .desc{
-    text-align: center;
-    width: 98%;
-    color: #636387;
-    font-size: 14px;
-    margin-top: 5%;
-  }
-  .chatbox{
-    width: 90%;
-    margin: auto;
-  }
+}
+.desc {
+  text-align: center;
+  width: 98%;
+  color: #636387;
+  font-size: 14px;
+  margin-top: 5%;
+}
+.chatbox {
+  width: 90%;
+  margin: auto;
+}
 
-  #chatbot-form{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    color: #636387;
-    width: 100%;
-    border-radius: 26px;
-    margin: auto;
-    border: 1px solid #636387;
-  }
-  
-  .input-box{
-    width: 85%;
-    border-style: none;
-    color: #636387;
-    background-color: #F0F0F5;
-    font-size: 14px;
-    outline: none;
-    margin-left: 1.5rem;
-    border-radius: 26px;
-    cursor: text;
-  }
-  
-  #chatbot-form-btn{
-    padding:1rem;
-    border: none;
-    border-radius: 50%;    
-    cursor: pointer;
-  }
-  .send{
-    width: 22px;
-    height: 22px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition-duration: .5s;
-  }
-  .send:hover{
-    transform: scale(1.2,1.2);
-  }
-  .media-list{
-    width: 95%;
-    height:100vh;
-    overflow: auto;
-    margin: 0.5rem auto;
-  }
-  .media{
-    list-style: none;
-    margin: 2%;
-  }
-  
-  .usermessage{
-    display: flex;
-    justify-content:flex-end;
-  }
-  
-  .author{
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    max-width: 80%;
-    font-size: 14px;
-  }
-  
-  .userinput_box{
-    background-color: #1A1AE5;
-    color: #F0F0F5;
-    padding: .8rem;
-    border-radius: 12px  0px 12px 12px;
-    text-align: left;
-    font-size: 14px;
-  }
-  .answer{
-    display: flex;
-    justify-content:flex-start;
-   
-  }
-  .bot{
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    max-width: 80%;
-    font-size: 14px;
-  }
-  .botoutput_box{
-    background-color: white;
-    color: #636387;
-    padding: .8rem;
-    border-radius: 0px  12px 12px 12px;
-    text-align: left;
-    font-size: 14px;
-  }
-  .botoutput_typing{
-    opacity: .5;
-  }
-  
+#chatbot-form {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #636387;
+  width: 100%;
+  border-radius: 26px;
+  margin: auto;
+  border: 1px solid #636387;
+}
+
+.input-box {
+  width: 85%;
+  border-style: none;
+  color: #636387;
+  background-color: #f0f0f5;
+  font-size: 14px;
+  outline: none;
+  margin-left: 1.5rem;
+  border-radius: 26px;
+  cursor: text;
+}
+
+#chatbot-form-btn {
+  padding: 1rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.send {
+  width: 22px;
+  height: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: 0.5s;
+}
+.send:hover {
+  transform: scale(1.2, 1.2);
+}
+.media-list {
+  width: 95%;
+  height: 100vh;
+  overflow: auto;
+  margin: 0.5rem auto;
+}
+.media {
+  list-style: none;
+  margin: 2%;
+}
+
+.usermessage {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  max-width: 80%;
+  font-size: 14px;
+}
+
+.userinput_box {
+  background-color: #1a1ae5;
+  color: #f0f0f5;
+  padding: 0.8rem;
+  border-radius: 12px 0px 12px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+.answer {
+  display: flex;
+  justify-content: flex-start;
+}
+.bot {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 80%;
+  font-size: 14px;
+}
+.botoutput_box {
+  background-color: white;
+  color: #636387;
+  padding: 0.8rem;
+  border-radius: 0px 12px 12px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+.code-con{
+  width: 95%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 1px solid #636387;
+  background-color: #636387;
+}
+.code-head{
+  padding:10px 20px;
+  text-align: end;
+  border-radius: 8px 8px 0px 0px;
+}
+.code-text{
+  color: white;
+  cursor: pointer;
+}
+.code-body{
+  display: flex;
+  background-color: white;
+  color: #636387;
+  padding:10px 20px;
+  border-radius: 0px 0px 8px 8px;
+}
+.botoutput_typing {
+  opacity: 0.5;
+}
